@@ -1,0 +1,24 @@
+2.1 8
+select to_char(next_day(last_day('12-DEC-2019')-7,'FRIDAY'), 'ddsp "of" MON, YYYY') from dual;
+
+2.1 9
+ select student_code, student_name, decode(dept_code, 20, 'Electricals',30, 'Electronics', 'Others') from student_master;
+
+
+
+2.2 1
+ select round(max(staff_sal)) Highest, round(min(staff_sal)) Lowest, round(sum(staff_sal)) Total, round(avg(staff_sal)) Average 
+             from staff_master;
+
+2.2 2
+select dept_code, count(mgr_code) "Total number of Managers" from staff_master group by dept_code;
+
+2.2 3
+select dept_code, sum(staff_sal) from staff_master group by dept_code having sum(staff_sal) > 20000;
+
+3.1 1
+select s.staff_name, s.dept_code, d.dept_name from staff_master s, department_master d where s.dept_code = d.dept_code and s.staff_sal > 20000;
+
+3.1 2
+ select s.staff_code staff#, s.staff_name staff, d.dept_name department, s.mgr_code mgr#, m.mgr_name manager from staff_master s, department_master d, manager_master m where s.dept_code = d.dept_code
+    and s.mgr_code = m.mgr_code;
